@@ -35,10 +35,11 @@ var setupAnswerArray = function (string) {
 	return array;
 };
 var getAttempts = function (string) {
-	return string.length * 8;
+	letterAttemptsNumber = 8;
+	return string.length * letterAttemptsNumber;
 };
 var showPlayerProgress = function (array, num) {
-	alert (array.join(" ") + "                                                                                                                          " + "Попыток: " + num);
+	alert (array.join(" ") + "\n\nПопыток: " + num);
 };
 var getGuess = function () {
 	var presumptiveLetter = prompt("Введите предполагаемую букву");
@@ -84,6 +85,7 @@ while (remainingLetters > 0 && attempts > 0) {
 	showPlayerProgress(answerArray, attempts);
 	// guess: ответ игрока
 	var guess = getGuess();
+	// checkRu: проверка ответа на количество букв (не более и не менее 1), а также на принадлежность русскому языку
 	var checkRu = checkInRussianLanguage(guess);
 	if (guess === null) {
 		break;
