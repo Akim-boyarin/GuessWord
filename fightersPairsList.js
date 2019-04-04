@@ -1,7 +1,6 @@
 var startFightersList = [];
 
 var fightersNumber = prompt("Сколько бойцов участвует в пуле?", "2");
-alert("Введите имена бойцов.");
 for (var m = 0; m < fightersNumber; m++) {
     var newFighterName = prompt("Введите фамилию и имя бойца", "");
     startFightersList.push(newFighterName);
