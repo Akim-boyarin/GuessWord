@@ -35,7 +35,7 @@ var setupAnswerArray = function (string) {
 	return array;
 };
 var getAttempts = function (string) {
-	letterAttemptsNumber = 8;
+	letterAttemptsNumber = 9;
 	return string.length * letterAttemptsNumber;
 };
 var showPlayerProgress = function (array, num) {
