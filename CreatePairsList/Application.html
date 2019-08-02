@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Создаем пул</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <div class="form">
+            <form action="" method="">
+                <div class="fighterfield">
+                    <label for="fighter">Введите фамилию и имя бойца:</label>
+                    <input type="text" id="fighter" v-model="formField.field">
+                    <button type="button" v-on:click="enterValueInList">Внести в список</button>
+                    <p> {{ errorMessage }} </p>
+                </div>
+                
+                <div class="generate">
+                    <button type="button" v-on:click="generateRandomPairs">Сгенерировать список пар</button>                    
+                </div>
+
+    
+            </form>
+
+            <!-- <div class="list">
+                <h3>Список бойцов</h3>
+                <ul v-for="fighter in startFightersList">
+                    <li> {{ fighter }} </li>
+                </ul>
+            </div> -->
+            
+            <div class="scoreboard">
+                <h3>Список пар:</h3>
+                <div class="pairs">
+                    <ul v-for="pair in pairsList">
+                        <li> 
+                            <ul v-for="fighter in pair">
+                                <li> {{ fighter }} </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            
+        </div>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                formField: {},
+                startFightersList: [],
+                pairsList: [],
+                pairsListFlag: true,
+                errorMessage: "",
+            },
+            methods: {
+                enterValueInList: function () {
+                    if (!this.pairsListFlag) {
+                        this.errorMessage = "Список составлен, добавлять больше нельзя!";
+                    } else {
+                        this.startFightersList.push(this.formField.field);
+                        // for (let i = 0; i < this.startFightersList.length; i++) {
+                        //     console.log("fighter " + (i + 1) + ": " + this.startFightersList[i]);
+                        // }
+                        this.formField.field = "";
+                    }
+                },
+                generateRandomPairs: function () {
+                    if (this.pairsList.length !== 0) {
+                        this.pairsList = [];
+                    }
+
+                    let fightersListCopy = this.startFightersList.slice();
+                    let pairsNumber = Math.round(fightersListCopy.length / 2);
+
+                    for (let i = 0; i < pairsNumber; i++) {
+                        let fightersPair = [];
+                        for (let j = 0; j < 2 ; j++) {
+                            let fighterIndex = Math.floor(Math.random() * fightersListCopy.length);
+                            let fighterName = fightersListCopy.splice(fighterIndex, 1);
+                            fightersPair.push(fighterName.join(""));
+                        }
+                        this.pairsList.push(fightersPair);
+                    }
+                    if (this.pairsListFlag) {
+                        this.pairsListFlag = false;
+                    }
+
+                }
+            },
+        });
+    </script>
+</body>
+</html>
