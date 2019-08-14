@@ -24,55 +24,7 @@ var words = [
 	"бульон",
 	"колобок"
 ];
-var pickWord = function () {
-    return words[Math.floor(Math.random() * words.length)];
-};
-var setupAnswerArray = function (string) {
-	var array = [];
-	for (var i = 0; i < string.length; i++) {
-		array.push("_");
-	};
-	return array;
-};
-var getAttempts = function (string) {
-	letterAttemptsNumber = 8;
-	return string.length * letterAttemptsNumber;
-};
-var showPlayerProgress = function (array, num) {
-	alert (array.join(" ") + "\n\nПопыток: " + num);
-};
-var getGuess = function () {
-	var presumptiveLetter = prompt("Введите предполагаемую букву");
-	return presumptiveLetter;
-};
-var checkInRussianLanguage = function (string) {
-	var letterString = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-	for (var i = 0; i < letterString.length; i++) {
-		if (string === letterString[i]) {
-			return true;
-		};
-	}
-	return false;
-};
-var updateGameState = function (presumptiveLetter, string, array) {
-	var check = 0;
-	for (var i = 0; i < string.length; i++) {
-		if (presumptiveLetter === string[i] && array[i] === "_") {
-			array[i] = presumptiveLetter;
-			check++;
-		}
-	}
-	return check;
-};
-var showAnswerAndCongratulatePlayer = function (array, string, num) {
-	if (array.join("") === string) {
-		alert (array.join(" "));
-		alert ("Было загадано слово - " + string + ". " + "На отгадывание понадобилось " + (string.length * 8 - num) + " попыток.");
-		alert ("Слово отгадано, Вы молодец!");
-	} else {
-		alert ("Конец игры.");
-	}
-};
+
 // word: загаданное слово
 var word = pickWord();
 // answerArray: итоговый массив
@@ -105,3 +57,53 @@ while (remainingLetters > 0 && attempts > 0) {
 };
 // результаты и поздравления
 showAnswerAndCongratulatePlayer(answerArray, word, attempts);
+
+function pickWord() {
+    return words[Math.floor(Math.random() * words.length)];
+};
+function setupAnswerArray(string) {
+	var array = [];
+	for (var i = 0; i < string.length; i++) {
+		array.push("_");
+	};
+	return array;
+};
+function getAttempts(string) {
+	letterAttemptsNumber = 8;
+	return string.length * letterAttemptsNumber;
+};
+function showPlayerProgress(array, num) {
+	alert (array.join(" ") + "\n\nПопыток: " + num);
+};
+function getGuess() {
+	var presumptiveLetter = prompt("Введите предполагаемую букву");
+	return presumptiveLetter;
+};
+function checkInRussianLanguage(string) {
+	var letterString = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+	for (var i = 0; i < letterString.length; i++) {
+		if (string === letterString[i]) {
+			return true;
+		};
+	}
+	return false;
+};
+function updateGameState(presumptiveLetter, string, array) {
+	var check = 0;
+	for (var i = 0; i < string.length; i++) {
+		if (presumptiveLetter === string[i] && array[i] === "_") {
+			array[i] = presumptiveLetter;
+			check++;
+		}
+	}
+	return check;
+};
+function showAnswerAndCongratulatePlayer(array, string, num) {
+	if (array.join("") === string) {
+		alert (array.join(" "));
+		alert ("Было загадано слово - " + string + ". " + "На отгадывание понадобилось " + (string.length * 8 - num) + " попыток.");
+		alert ("Слово отгадано, Вы молодец!");
+	} else {
+		alert ("Конец игры.");
+	}
+};
