@@ -20,7 +20,6 @@ for (let i = 0; i < pairsNumber; i++) {
     pairsList.push(fightersPair);
 };
 
-
 for (let n = 0; n < pairsList.length; n++) {
     console.log((n + 1) + "-я " + "пара:");
     for (let m = 0; m < pairsList[n].length; m++) {
