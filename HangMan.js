@@ -58,6 +58,7 @@ while (remainingLetters > 0 && attempts > 0) {
 // результаты и поздравления
 showAnswerAndCongratulatePlayer(answerArray, word, attempts);
 
+
 function pickWord() {
     return words[Math.floor(Math.random() * words.length)];
 };
