@@ -1,28 +1,28 @@
-var startFightersList = [];
+let startFightersList = [];
 
-var fightersNumber = prompt("Сколько бойцов участвует в пуле?", "2");
-for (var m = 0; m < fightersNumber; m++) {
-    var newFighterName = prompt("Введите фамилию и имя бойца", "");
+let fightersNumber = prompt("Сколько бойцов участвует в пуле?", "2");
+for (let m = 0; m < fightersNumber; m++) {
+    let newFighterName = prompt("Введите фамилию и имя бойца", "");
     startFightersList.push(newFighterName);
 }
 
-var pairsNumber = Math.round(startFightersList.length / 2);
+let pairsNumber = Math.round(startFightersList.length / 2);
 
-var pairsList = [];
+let pairsList = [];
 
-for (var i = 0; i < pairsNumber; i++) {
-    var fightersPair = [];
-    for (var j = 0; j < 2 ; j++) {
-        var fighterIndex = Math.floor(Math.random() * startFightersList.length);
-        var fighterName = startFightersList.splice(fighterIndex, 1);
+for (let i = 0; i < pairsNumber; i++) {
+    let fightersPair = [];
+    for (let j = 0; j < 2 ; j++) {
+        let fighterIndex = Math.floor(Math.random() * startFightersList.length);
+        let fighterName = startFightersList.splice(fighterIndex, 1);
         fightersPair.push(fighterName);
     }
     pairsList.push(fightersPair);
 };
 
-for (var n = 0; n < pairsList.length; n++) {
+for (let n = 0; n < pairsList.length; n++) {
     console.log((n + 1) + "-я " + "пара:");
-    for (var m = 0; m < pairsList[n].length; m++) {
+    for (let m = 0; m < pairsList[n].length; m++) {
         console.log(pairsList[n][m].join(""));
     }
 }
