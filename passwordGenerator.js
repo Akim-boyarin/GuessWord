@@ -1,12 +1,15 @@
-var pickRandomWord = function (words) {
-    return words[Math.floor(Math.random() * words.length)];
+let symbols = "abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ0123456789".split("");
+let randomSymbols = [];
+let length = 8;
+
+for (let i = 0; i < length; i++) {
+	randomSymbols.push(pickRandomSymbol(symbols));
 };
 
-var symbols = ["abcdefghigklmnopqrstuvwxyz", "ABCDEFGHIGKLMNOPQRSTUVWXYZ", "0123456789"];
-var randomArray = [];
-var length = prompt("Введите длину строки:", 8);
+let password = randomSymbols.join("");
+console.log("Новый пароль: " + password);
 
-for (var i = 0; i < parseInt(length, 10) ; i++) {
-	randomArray.push(pickRandomWord(pickRandomWord(symbols)));
+
+function pickRandomSymbol(differentSymbols) {
+    return differentSymbols[Math.floor(Math.random() * differentSymbols.length)];
 };
-randomArray.join("");
