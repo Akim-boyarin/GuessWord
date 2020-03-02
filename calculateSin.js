@@ -4,7 +4,7 @@ function calculateSin (arg) { // аргумент в градусах
 	if (arg / 360 >= 1) {
 		arg -= Math.floor(arg / 360) * 360;
 	}
-	let argRad = arg * Math.PI / 180;
+	let argRad = arg * Math.PI / 180; // аргумент в радианах
 	let sin = 0;
 	let maxIterationValue = 120;
 	for (let i = 0; i <= maxIterationValue; i++) {
@@ -21,4 +21,4 @@ function calculateFactorial(arg) {
 	return result;
 }
 
-console.log(calculateSin(30));
+console.log(calculateSin(89) === calculateSin(91));
