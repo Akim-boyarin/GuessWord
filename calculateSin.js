@@ -1,13 +1,13 @@
-console.log(calculateSin(30));
+// вычисление синуса угла в градусах через формулу ряда
 
 function calculateSin (arg) { // аргумент в градусах
 	if (arg / 360 >= 1) {
 		arg -= Math.floor(arg / 360) * 360;
 	}
-	var argRad = arg * Math.PI / 180;
-	var sin = 0;
-	var sum = 120;
-	for (var i = 0; i <= sum; i++) {
+	let argRad = arg * Math.PI / 180;
+	let sin = 0;
+	let maxIterationValue = 120;
+	for (let i = 0; i <= maxIterationValue; i++) {
 		sin += (Math.pow(-1, i) * Math.pow(argRad, (2 * i + 1))) / calculateFactorial(2 * i + 1);
 	}
 	return sin;
@@ -20,3 +20,5 @@ function calculateFactorial(arg) {
 	}
 	return result;
 }
+
+console.log(calculateSin(30));
