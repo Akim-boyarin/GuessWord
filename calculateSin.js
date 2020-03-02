@@ -21,4 +21,4 @@ function calculateFactorial(arg) {
 	return result;
 }
 
-console.log(calculateSin(89) === calculateSin(91));
+console.log(calculateSin(30));
