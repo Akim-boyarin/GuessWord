@@ -17,10 +17,10 @@ function calculateSizes(initialData) {
 let data = {
     parentSize: 300,
     blocks: [{
-            flex: "1 0 50px"
+            flex: "1 0 50px",
         },
         {
-            flex: "3 0 50px"
+            flex: "3 0 50px",
         },
     ]
 }
