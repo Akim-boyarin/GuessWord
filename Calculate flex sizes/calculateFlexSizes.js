@@ -1,4 +1,19 @@
-// calculation of sizes in flex-container 
+// вычислить итоговые размеры флекс-элементов
+
+function calculateSizes(initialData) {
+    let workData = convertData(initialData);
+
+    let flexBasisSum = workData.reduce((sum, block) => sum + block.flexBasis, 0);
+    let sizesDifference = initialData.parentSize - flexBasisSum;
+
+    let flexSizes = !sizesDifference ? workData.map(block => block.flexBasis) :
+        (sizesDifference > 0 ? calculateSizesWidthFlexGrows(sizesDifference, workData) 
+            : calculateSizesWidthFlexShrinks(sizesDifference, workData));
+
+    return flexSizes;
+}
+
+// вычисление  и отображение в удобном виде
 let data = {
     parentSize: 300,
     blocks: [{
@@ -9,7 +24,6 @@ let data = {
         },
     ]
 }
-
 
 let sizes = calculateSizes(data);
 
@@ -22,35 +36,27 @@ console.log(sizesInGoodVisible);
 
 
 
-// basic function
-function calculateSizes(initialData) {
+
+// вспомогательные функции
+
+// конвертирование данных в оптимальный для обработки формат
+function convertData(data) {
     let dataItemsNames = ["flexGrow", "flexShrink", "flexBasis"];
 
-    let workData = [];
-    initialData.blocks.forEach(block => {
+    let convertedData = [];
+    data.blocks.forEach(block => {
         let blockData = {};
         let flexData = getNumbersFromString(block.flex);
         dataItemsNames.forEach((name, nameIndex) => {
             blockData[name] = flexData[nameIndex];
-        })
-        workData.push(blockData);
+        });
+        convertedData.push(blockData);
     });
-    
 
-    let flexBasisesSum = workData.reduce((sum, blockData) => sum + blockData.flexBasis, 0);
-    let sizesDifference = initialData.parentSize - flexBasisesSum;
-
-    let flexSizes = !sizesDifference ? workData.map(block => block.flexBasis) :
-        (sizesDifference >= 0 ? calculateSizesWidthFlexGrows(sizesDifference, workData) 
-            : calculateSizesWidthFlexShrinks(sizesDifference, workData));
-
-    return flexSizes;
+    return convertedData;
 }
 
-
-// secondary functions
-
-// calculation with flex-grows
+// вычисление размеров элементов при увеличивании
 function calculateSizesWidthFlexGrows(freeSpace, blocksData) {
     let minimumShareOfFreeSpace = freeSpace / blocksData.reduce((sum, blockData) => sum + blockData.flexGrow, 0);
 
@@ -60,7 +66,7 @@ function calculateSizesWidthFlexGrows(freeSpace, blocksData) {
 }
 
 
-// calculation with flex-shrink
+// вычисление размеров элементов при уменьшении
 function calculateSizesWidthFlexShrinks(negativeSpace, blocksData) {
     let theSumOfDataMultiplications = blocksData.reduce((sum, blockData) => sum + blockData.flexBasis * blockData.flexShrink, 0);
 
@@ -73,7 +79,7 @@ function calculateSizesWidthFlexShrinks(negativeSpace, blocksData) {
 
 
 
-// get list of number-values in string
+// получить все числа из строки
 function getNumbersFromString(string) {
     let baseForNumbers = [];
     let necessarySigns = ".0123456789"; // "." for decimal fractions
