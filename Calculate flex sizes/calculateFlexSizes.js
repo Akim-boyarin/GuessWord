@@ -40,11 +40,11 @@ console.log(sizesInGoodVisible);
 // вспомогательные функции
 
 // конвертирование данных в оптимальный для обработки формат
-function convertData(incomingData) {
+function convertData(data) {
     let dataItemsNames = ["flexGrow", "flexShrink", "flexBasis"];
 
     let convertedData = [];
-    incomingData.blocks.forEach(block => {
+    data.blocks.forEach(block => {
         let blockData = {};
         let flexData = getNumbersFromString(block.flex);
         dataItemsNames.forEach((name, nameIndex) => {
