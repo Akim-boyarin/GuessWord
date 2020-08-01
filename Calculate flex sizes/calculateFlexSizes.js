@@ -23,7 +23,7 @@ console.log(sizesInGoodVisible);
 
 
 // basic function
-function calculateSizes(initialData = data) {
+function calculateSizes(initialData) {
     let dataItemsNames = ["flexGrow", "flexShrink", "flexBasis"];
 
     let workData = [];
