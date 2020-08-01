@@ -21,4 +21,4 @@ function calculateFactorial(arg) {
 	return result;
 }
 
-console.log(calculateSin(30));
+console.log(calculateSin(1));
