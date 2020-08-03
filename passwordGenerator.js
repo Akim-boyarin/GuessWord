@@ -1,6 +1,6 @@
 // генератор паролей с добавлением/убиранием составных частей
 
-function generatePasswordOrId(length, conditionsOfGeneration) {
+function generatePassword(length, conditionsOfGeneration) {
     // определение исходных данных и условий
 
     // исходные данные
@@ -145,9 +145,9 @@ let conditionsOfGeneration = {
         smallLetters: true,
     };
 
-console.log(generatePasswordOrId(passwordLength, conditionsOfGeneration));
-console.log(generatePasswordOrId(passwordLength, conditionsOfGeneration));
-console.log(generatePasswordOrId(passwordLength, conditionsOfGeneration));
+console.log(generatePassword(passwordLength, conditionsOfGeneration));
+console.log(generatePassword(passwordLength, conditionsOfGeneration));
+console.log(generatePassword(passwordLength, conditionsOfGeneration));
 
 
 
