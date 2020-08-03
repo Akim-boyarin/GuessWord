@@ -1,4 +1,4 @@
-// passwordGeneratorWithConditions
+// генератор паролей с добавлением/убиранием составных частей
 
 function generatePasswordOrId(length, conditionsOfGeneration) {
     // определение исходных данных и условий
