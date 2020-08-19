@@ -22,5 +22,3 @@ function calculateFactorial(arg) {
 }
 
 console.log(calculateSin(1));
-
-// изменение
