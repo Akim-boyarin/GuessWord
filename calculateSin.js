@@ -29,6 +29,8 @@ function calculateSin(angle) {
 	return sin;
 }
 
+// вспомогательные функции
+
 function determineTheCalculationMethod(angle) {
 	let data = {};
 
@@ -64,5 +66,3 @@ function getFactorial(arg) {
 	return result;
 }
 
-
-console.log(calculateSin(30));
