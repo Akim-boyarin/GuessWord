@@ -56,7 +56,7 @@ function printListElementsInReverse(linkedList) {
 }
 
 
-// Сейчас я вижу что для реализации той же идеи 
+// Сейчас я вижу, что для реализации той же идеи 
 // можно использовать стек контекстов вызова:
 function printListElementsInReverse(linkedList) {
     if (linkedList.next !== null) {
