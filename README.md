@@ -1,4 +1,4 @@
 # Programs-on-JS
 
-My some programs on JavaScript.
+Little programs on JS
 
