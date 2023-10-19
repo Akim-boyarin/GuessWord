@@ -1,4 +1,4 @@
-// Code and decode by Morse Code
+// 111 Code and decode by Morse Code
 
 class MorseCode {
     constructor() {
